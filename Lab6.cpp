@@ -27,7 +27,28 @@ public:
     }
 
     // Remove a book from the system
+     void removeBook(const string& title) {
+        for (size_t i = 0; i < books.size(); ++i) {
+            if (books[i].title == title) {
+                books.erase(books.begin() + i);
+                cout << "Book removed successfully!\n";
+                return;
+            }
+        }
+        cout << "Book not found!\n";
+    }
+
     // List all books in the system
+    void listBooks() const {
+        if (books.empty()) {
+            cout << "No books in the system.\n";
+            return;
+        }
+        cout << "Books in the system:\n";
+        for (const auto& book : books) {
+            cout << "Title: " << book.title << ", Author: " << book.author << ", Year: " << book.year << endl;
+        }
+    }
 };
 
 int main() {
