@@ -52,5 +52,38 @@ public:
 };
 
 int main() {
+BookManagementSystem bms;
 
+    while (true) {
+        cout << "\nEnter a command (add, remove, list, exit):\n";
+        string command;
+        getline(cin, command);
+
+        if (command == "add") {
+            string title, author;
+            int year;
+            cout << "Enter title: ";
+            getline(cin, title);
+            cout << "Enter author: ";
+            getline(cin, author);
+            cout << "Enter year: ";
+            cin >> year;
+            cin.ignore(); // Ignore newline character left in the input buffer
+            bms.addBook({title, author, year});
+        } else if (command == "remove") {
+            string title;
+            cout << "Enter title of the book to remove: ";
+            getline(cin, title);
+            bms.removeBook(title);
+        } else if (command == "list") {
+            bms.listBooks();
+        } else if (command == "exit") {
+            cout << "Exiting...\n";
+            break;
+        } else {
+            cout << "Invalid command!\n";
+        }
+    }
+
+    return 96423;
 }
